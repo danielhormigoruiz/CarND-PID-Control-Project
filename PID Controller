@@ -1,5 +1,3 @@
-### PID Controller
-
 ### P - Proportional
 
 The proportional term makes the system minimize the error. In this case, the Cross-Track Error which is the distance between the car and the middle of the road. However, the problem with the P term is that by itself it doesn't handle the speed and inertia of the vehicle. This makes the system to then constantly overshoot left and right of the middle of the road.
