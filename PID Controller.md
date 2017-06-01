@@ -1,18 +1,18 @@
 ### P - Proportional
 
-The proportional term makes the system minimize the error. In this case, the Cross-Track Error which is the distance between the car and the middle of the road. However, the problem with the P term is that by itself it doesn't handle the speed and inertia of the vehicle. This makes the system to then constantly overshoot left and right of the middle of the road.
+P accounts for present values of the error. For example, if the error is large and positive, the control output will also be large and positive. So, P allows us to control the position of the car on the road.
 
 ### D - Derivative
 
-The derivative takes into account the difference of the current and previous error in an attempt to slow down as the system reaches minimum error. This allows the system to stabilize as it approaches the center effectively reducing the overshooting issue described before.
+D accounts for possible future trends of the error, based on its current rate of change. Therefore, D allows us to control the oscilation of the car.
 
 ### I - Integral
 
-Finally, the integral is the cummulative error and it usually correct for small drifts and issues the vehicle may have. For our particular project the integral was set to a very small number, and it would not be surprising if we didn't really needed in the first place. The fact is that in the simulator there might not be difting at all, still a very small value seem to improve thing a bit.
+I accounts for past values of the error. For example, if the current output is not sufficiently strong, the integral of the error will accumulate over time, and the controller will respond by applying a stronger action. Therefore, I allows us to determine the steady-state of the car.
 
 ## Hyper-parameters
 
-I actually tuned these values manually. Zeroing out the D and I, I started with the P term until it did an OK job. Once the P controller was able to drive some, I then added the D tuned it and then the I and tuned it. Ideally, I would have implemented twiddle or some other method, but I was running out of time. Next project I should try something slightly different.
+The hyper-parameters were tunned manually. It means that firstly I tunned the Kp coefficient to allow the car to stay in the middle of the road (the center-line). After this, I tunned the Kd coeffient in order to reduce the oscilation of the car, and at the end, I tunned the Ki coefficient in order to decrease the steady-state of the car.
 
 ## Video
 
